@@ -1,0 +1,8 @@
+sudo: required
+services:
+    docker
+before_install:
+    - docker build -t sureka28/singlecontainer -f Dockerfile.dev .
+script:
+    - docker run -e CI=true sureka28/singlecontainer npm run test -- --coverage
+    
